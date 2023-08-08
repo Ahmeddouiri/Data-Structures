@@ -1,35 +1,53 @@
-// Online Javascript Editor for free
-// Write, Edit and Run your Javascript code using JS Online Compiler
-let set1=[5,6,8,2]
-let set2=[2,8,6,4]
+let set1=[3,1,7,9]
+let set2=[2,4,1,9,3]
 var occ=0
 var tab = []
-for(x=0 ;x < set1.length ; x++ )
-{
-for(y=0 ;y < set2.length ; y++)
-{
-     // console.log(set1[x])
-      //    console.log(set2[y])
+tab = tab.concat(set1,set2)
+var diff = []
 
- 
-  if(set1[x] == set2[y]   )
-   {
-       
-       occ = occ+1
-       if(occ == 0 && y == set2.length-1)
-        {
-            console.log(set1[x])
-            z=0
-         tab[z]=set1[x]
-         occ=0
-        z++   
-        }
+//////// test set1 //////////
+
+for(let x=0 ;x < set1.length ; x++ )
+{
+for(let y=0 ;y < tab.length ; y++)
+{
+
+  if(set1[x] == tab[y]   )
+  {
+      occ = occ + 1
       
-   }
+  }
   
 }
-}
-for(z=0 ;z < tab.length ; z++)
+if(occ == 1 )
 {
-   consol.log(tab[z]) 
+    diff.push(set1[x])
 }
+occ = 0
+}
+
+//////// test set2 //////////
+for(let x=0 ;x < set2.length ; x++ )
+{
+for(let y=0 ;y < tab.length ; y++)
+{
+
+  if(set2[x] == tab[y]   )
+  {
+      occ = occ + 1
+      
+  }
+  
+}
+if(occ == 1 )
+{
+    diff.push(set2[x])
+}
+occ = 0
+}
+
+//// affichage
+console.log(diff)
+//// sum /////
+const sum = diff.reduce((p,b) => p + b, 0);
+console.log("sum of distinct elements is : " +sum)
